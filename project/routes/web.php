@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\Home;
+use App\Http\Livewire\Category\Show as CategoriesShow;
+use App\Http\Livewire\Product\Show as ProductsShow;
+use App\Http\Livewire\Delivery\Show as DeliveriesShow;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +17,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::middleware([
     'auth:sanctum',
@@ -26,3 +30,14 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::get('/', Home::class);
+
+// category page
+Route::get('/categories', CategoriesShow::class)-> name('categories');
+
+// product page
+Route::get('/products', ProductsShow::class)-> name('products');
+
+// delivery page
+Route::get('/deliveries', DeliveriesShow::class)-> name('deliveries');

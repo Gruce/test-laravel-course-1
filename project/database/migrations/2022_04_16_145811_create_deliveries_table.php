@@ -13,20 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('deliveries', function (Blueprint $table) {
             $table->id();
-            
-            // اسم المنتج
-            $table->string('name');
-
-            // سعر المنتج
-            $table->integer('price');
-
-            // كمية المنتج
-            $table->integer('count');
-
-            // وصف للمنتج
-            $table->string('description')->nullable();
+            $table->string('recipient');
+            $table->string('address');
+            $table->time('expectual_arrival');
+            $table->time('actual_arrival');
+            $table->string('description');
             $table->timestamps();
         });
     }
@@ -38,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('deliveries');
     }
 };
